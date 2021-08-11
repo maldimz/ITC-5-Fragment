@@ -7,11 +7,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -90,13 +92,28 @@ public class FragmentLogin extends Fragment {
                     Data data = new Data();
                     username = data.getUsername();
                     password = data.getPassword();
-                    inputUname = editTexts.get(0).getText().toString();
-                    inputPassword = editTexts.get(1).getText().toString();
+                    Log.d("CEK DATA", "Data Terload");
+
+                    try{
+                        inputUname = editTexts.get(0).getText().toString();
+                        inputPassword = editTexts.get(1).getText().toString();
+                        if(inputUname.equals("")||inputPassword.equals(""))
+                            throw new NullPointerException();
+                    }catch(NullPointerException npe){
+                        Log.d("CEK INPUT", "Harus Diisi");
+                        Toast.makeText(getActivity(), "Tidak Boleh Kosong!", Toast.LENGTH_SHORT).show();
+                    }
+
                     if(inputUname.equals(username)&&inputPassword.equals(password)){
+                        Log.d("CEK BUTTON", "LOGIN");
+                        Toast.makeText(getActivity(), "Masuk", Toast.LENGTH_SHORT).show();
+
                         FragmentIsi fragmentIsi = new FragmentIsi();
                         FragmentTransaction transaction = getFragmentManager().beginTransaction();
                         transaction.replace(R.id.fl_mainFrame, fragmentIsi);
                         transaction.commit();
+                    }else{
+                        Toast.makeText(getActivity(), "Username / Password Salah!", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -108,6 +125,7 @@ public class FragmentLogin extends Fragment {
                     FragmentTransaction transaction = getFragmentManager().beginTransaction();
                     transaction.replace(R.id.fl_mainFrame, fragmentDaftar);
                     transaction.commit();
+                    Log.d("CEK BUTTON", "DAFTAR");
                 }
             });
             // Inflate the layout for this fragment

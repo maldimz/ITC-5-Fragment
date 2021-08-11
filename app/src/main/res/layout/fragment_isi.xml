@@ -75,7 +75,7 @@
             android:layout_marginHorizontal="10dp"
             android:hint="isi tinggi badan (cth : 180)"
             android:textSize="12sp"
-/>
+        />
 
         <Button
             android:layout_marginTop="30dp"

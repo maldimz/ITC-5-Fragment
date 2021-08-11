@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,12 +90,25 @@ public class FragmentDaftar extends Fragment {
             @Override
             public void onClick(View v) {
                 Data data = new Data();
-                password = editTexts.get(1).getText().toString();
-                confirmPassword = editTexts.get(2).getText().toString();
+                try{
+                    username = editTexts.get(0).getText().toString();
+                    password = editTexts.get(1).getText().toString();
+                    confirmPassword = editTexts.get(2).getText().toString();
+                    if(username.equals("")||password.equals("")||confirmPassword.equals(""))
+                        throw new NullPointerException();
+                }catch(NullPointerException npe){
+                    Log.d("CEK INPUT", "Harus Diisi");
+                    Toast.makeText(getActivity(), "Tidak Boleh Kosong!", Toast.LENGTH_SHORT).show();
+                }
+
                 if(password.equals(confirmPassword)){
-                    data.setUsername(editTexts.get(0).getText().toString());
+                    data.setUsername(username);
                     data.setPassword(password);
+                    Log.d("CEK DAFTAR", "Data Tersimpan");
                     Toast.makeText(getActivity(), "Berhasil!", Toast.LENGTH_SHORT).show();
+                }else{
+                    Log.d("CEK DAFTAR", "GAGAL");
+                    Toast.makeText(getActivity(), "Password Salah!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -106,6 +120,7 @@ public class FragmentDaftar extends Fragment {
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fl_mainFrame, fragmentLogin);
                 transaction.commit();
+                Log.d("CEK BUTTON", "KEMBALI LOGIN");
             }
         });
         // Inflate the layout for this fragment

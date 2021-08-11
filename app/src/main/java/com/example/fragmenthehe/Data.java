@@ -1,7 +1,7 @@
 package com.example.fragmenthehe;
 
 public class Data {
-    private static String username, password, berat, tinggi, klasifikasi;
+    private static String username, password, berat="", tinggi="", klasifikasi;
     private float bmi;
 
     public float getBmi() {
