@@ -99,21 +99,20 @@ public class FragmentLogin extends Fragment {
                         inputPassword = editTexts.get(1).getText().toString();
                         if(inputUname.equals("")||inputPassword.equals(""))
                             throw new NullPointerException();
+                        else if(inputUname.equals(username)&&inputPassword.equals(password)){
+                            Log.d("CEK BUTTON", "LOGIN");
+                            Toast.makeText(getActivity(), "Masuk", Toast.LENGTH_SHORT).show();
+
+                            FragmentIsi fragmentIsi = new FragmentIsi();
+                            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                            transaction.replace(R.id.fl_mainFrame, fragmentIsi);
+                            transaction.commit();
+                        }else{
+                            Toast.makeText(getActivity(), "Username / Password Salah!", Toast.LENGTH_SHORT).show();
+                        }
                     }catch(NullPointerException npe){
                         Log.d("CEK INPUT", "Harus Diisi");
                         Toast.makeText(getActivity(), "Tidak Boleh Kosong!", Toast.LENGTH_SHORT).show();
-                    }
-
-                    if(inputUname.equals(username)&&inputPassword.equals(password)){
-                        Log.d("CEK BUTTON", "LOGIN");
-                        Toast.makeText(getActivity(), "Masuk", Toast.LENGTH_SHORT).show();
-
-                        FragmentIsi fragmentIsi = new FragmentIsi();
-                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                        transaction.replace(R.id.fl_mainFrame, fragmentIsi);
-                        transaction.commit();
-                    }else{
-                        Toast.makeText(getActivity(), "Username / Password Salah!", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
