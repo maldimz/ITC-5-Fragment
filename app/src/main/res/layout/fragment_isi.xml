@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/ijo_kalem"
+    tools:context=".FragmentIsi">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        android:background="@color/white"
+        >
+
+        <TextView
+            android:id="@+id/tv_spek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="DATA DIRI"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/tv_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Username : Admin"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/tv_berat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Berat Badan (kg)"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/et_berat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:layout_marginHorizontal="10dp"
+            android:hint="isi berat badan (cth : 70)"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/tv_tinggi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Tinggi Badan (cm)"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/et_tinggi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:layout_marginHorizontal="10dp"
+            android:hint="isi tinggi badan (cth : 180)"
+            android:textSize="12sp"
+/>
+
+        <Button
+            android:layout_marginTop="30dp"
+            android:id="@+id/btn_test"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="BMI Test"
+            android:backgroundTint="@color/dongker"
+            />
+
+        <Button
+            android:id="@+id/btn_logut"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Logout"
+            android:backgroundTint="@color/ijo_kalem"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
