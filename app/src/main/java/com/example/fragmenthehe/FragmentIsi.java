@@ -48,7 +48,7 @@ public class FragmentIsi extends Fragment {
     };
     ArrayList<EditText> editTexts = new ArrayList<>();
     ArrayList<Button> buttons = new ArrayList<>();
-    ArrayList<TextView> textViews = new ArrayList<>();
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -151,17 +151,19 @@ public class FragmentIsi extends Fragment {
                         data.setKlasifikasi("Obese III");
                     }
                     Log.d("CEK DATA", "UPLOADED");
-                    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity(), R.style.Transparent_Dialog);
+                    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(view.getContext(), R.style.Transparent_Dialog);
                     View dialogView = getLayoutInflater().inflate(R.layout.fragment_dialog, null);
-                    dialogBuilder.setView(dialogView);
-                    final AlertDialog dialog = dialogBuilder.create();
-                    dialog.show();
+
                     Log.d("CEK DIALOG", "Dialog Fragment Berjalan");
+                    ArrayList<TextView> textViews = new ArrayList<>();
                     for (int value : textViewId) textViews.add(dialogView.findViewById(value));
                     textViews.get(0).setText(data.getUsername());
                     textViews.get(1).setText("BMI = " + String.valueOf(data.getBmi()));
                     textViews.get(2).setText("Klasifikasi Anda : " + data.getKlasifikasi());
                     Log.d("CEK DIALOG", "Dialog Fragment Data Update");
+                    dialogBuilder.setView(dialogView);
+                    final AlertDialog dialog = dialogBuilder.create();
+                    dialog.show();
                 }
             }
         });
